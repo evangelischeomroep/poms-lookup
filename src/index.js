@@ -5,7 +5,7 @@ import './index.css'
 const root = document.getElementById('root')
 
 let render = () => {
-  const App = require('./App').default
+  const App = require('./containers/App').default
 
   ReactDOM.render(
     <App />,
@@ -38,7 +38,7 @@ if (module.hot) {
 
   // Whenever the App component file or one of its dependencies
   // is changed, re-import the updated component and re-render it
-  module.hot.accept('./App', () => {
+  module.hot.accept('./containers/App', () => {
     setTimeout(render)
   })
 }
