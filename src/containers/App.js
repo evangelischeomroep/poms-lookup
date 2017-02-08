@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import SearchForm from './SearchForm'
+
 import './App.css'
 
 class App extends Component {
@@ -7,6 +9,7 @@ class App extends Component {
       <div className='App'>
         <header className='App-header'>
           <h1>POMS Lookup</h1>
+          <SearchForm />
         </header>
         <div className='App-content'>
           <p className='App-intro'>
