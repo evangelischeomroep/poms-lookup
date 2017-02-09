@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Button from '../components/Button'
 
+import './SearchForm.css'
+
 class SearchForm extends Component {
   state = {
     text: ''
@@ -19,9 +21,15 @@ class SearchForm extends Component {
   render () {
     return (
       <form onSubmit={this.onFormSubmit}>
-        <div>
-          <label htmlFor='text'>Zoekterm</label>
-          <input id='text' type='text' value={this.state.text} onChange={this.onTextChange} />
+        <div className='SearchForm'>
+          <label className='SearchForm-label' htmlFor='text'>Zoekterm</label>
+          <input
+            id='text'
+            className='SearchForm-input'
+            type='text'
+            value={this.state.text}
+            placeholder='Vul een zoekterm in'
+            onChange={this.onTextChange} />
           <Button type='submit'>Zoeken</Button>
         </div>
       </form>
