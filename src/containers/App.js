@@ -18,10 +18,12 @@ class App extends Component {
   }
 
   onSearchResultClick = ({ mid }) => {
+    // Remove from selection if it is already selected
     if (this.state.selection.indexOf(mid) > -1) {
       this.setState({
         selection: this.state.selection.filter(item => item !== mid)
       })
+    // Add to selection if not already selected
     } else {
       this.setState({
         selection: [...this.state.selection, mid]
@@ -39,10 +41,14 @@ class App extends Component {
           <SearchForm />
         </header>
         <div className='App-content'>
-          {results.length && <SearchResults results={results} onSearchResultClick={this.onSearchResultClick} />}
+          {results.length && <SearchResults
+            results={results}
+            selection={selection}
+            onSearchResultClick={this.onSearchResultClick}
+          />}
         </div>
         <footer className='App-footer'>
-          <p>{selection.length} items geselecteerd</p>
+          <p>{selection.length} {selection.length === 1 ? 'item' : 'items'} geselecteerd</p>
           <p>POMS Lookup</p>
         </footer>
       </div>

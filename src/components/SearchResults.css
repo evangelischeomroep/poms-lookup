@@ -1,3 +1,7 @@
 .SearchResults {
 	flex: 1 1 auto;
 }
+
+.SearchResults-row.is-selected {
+	background-color: darkgrey;
+}

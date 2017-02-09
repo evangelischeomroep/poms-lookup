@@ -5,9 +5,16 @@ import './SearchResults.css'
 
 const SearchResults = ({
   results = [],
+  selection = [],
   onSearchResultClick = () => {}
 }) => {
   const rowGetter = ({ index }) => results[index]
+
+  const rowClassName = ({ index }) => {
+    const mid = results[index] && results[index].mid
+
+    return selection.indexOf(mid) > -1 ? 'SearchResults-row is-selected' : 'SearchResults-row'
+  }
 
   const onRowClick = ({ rowData }) => {
     if (rowData && rowData.mid) {
@@ -26,6 +33,7 @@ const SearchResults = ({
             rowGetter={rowGetter}
             rowCount={results.length}
             rowHeight={60}
+            rowClassName={rowClassName}
             onRowClick={onRowClick}
           >
             <Column
