@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Button from '../components/Button'
 
 class SearchForm extends Component {
   state = {
@@ -21,7 +22,7 @@ class SearchForm extends Component {
         <div>
           <label htmlFor='text'>Zoekterm</label>
           <input id='text' type='text' value={this.state.text} onChange={this.onTextChange} />
-          <button type='submit'>Zoeken</button>
+          <Button type='submit'>Zoeken</Button>
         </div>
       </form>
     )
