@@ -3,13 +3,13 @@ import classnames from 'classnames'
 
 import './Button.css'
 
-const Button = ({ children, className, ...props }) => {
+const Button = ({ children, className, ...other }) => {
   const classes = classnames({
     Button: true
   }, className)
 
   return (
-    <button className={classes}>{children}</button>
+    <button className={classes} {...other}>{children}</button>
   )
 }
 

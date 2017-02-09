@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SearchForm from './SearchForm'
+import Button from '../components/Button'
 import SearchResults from '../components/SearchResults'
 
 import './App.css'
@@ -31,6 +32,10 @@ class App extends Component {
     }
   }
 
+  onChooseSelection = () => {
+    console.log('Selected: ', this.state.selection)
+  }
+
   render () {
     const { results, selection } = this.state
 
@@ -48,7 +53,7 @@ class App extends Component {
           />}
         </div>
         <footer className='App-footer'>
-          <p>{selection.length} {selection.length === 1 ? 'item' : 'items'} geselecteerd</p>
+          <p>{selection.length} {selection.length === 1 ? 'item' : 'items'} geselecteerd <Button onClick={this.onChooseSelection}>Kies geselecteerde items</Button></p>
           <p>POMS Lookup</p>
         </footer>
       </div>
