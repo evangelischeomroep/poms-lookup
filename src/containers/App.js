@@ -13,11 +13,24 @@ const MOCK_RESULTS = [
 
 class App extends Component {
   state = {
-    results: MOCK_RESULTS
+    results: MOCK_RESULTS,
+    selection: []
+  }
+
+  onSearchResultClick = ({ mid }) => {
+    if (this.state.selection.indexOf(mid) > -1) {
+      this.setState({
+        selection: this.state.selection.filter(item => item !== mid)
+      })
+    } else {
+      this.setState({
+        selection: [...this.state.selection, mid]
+      })
+    }
   }
 
   render () {
-    const { results } = this.state
+    const { results, selection } = this.state
 
     return (
       <div className='App'>
@@ -26,9 +39,10 @@ class App extends Component {
           <SearchForm />
         </header>
         <div className='App-content'>
-          {results.length && <SearchResults results={results} />}
+          {results.length && <SearchResults results={results} onSearchResultClick={this.onSearchResultClick} />}
         </div>
         <footer className='App-footer'>
+          <p>{selection.length} items geselecteerd</p>
           <p>POMS Lookup</p>
         </footer>
       </div>

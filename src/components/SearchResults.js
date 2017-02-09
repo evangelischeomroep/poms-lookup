@@ -3,8 +3,17 @@ import { AutoSizer, Column, Table } from 'react-virtualized'
 
 import './SearchResults.css'
 
-const SearchResults = ({ results }) => {
+const SearchResults = ({
+  results = [],
+  onSearchResultClick = () => {}
+}) => {
   const rowGetter = ({ index }) => results[index]
+
+  const onRowClick = ({ rowData }) => {
+    if (rowData && rowData.mid) {
+      onSearchResultClick({ mid: rowData.mid })
+    }
+  }
 
   return (
     <div className='SearchResults'>
@@ -17,6 +26,7 @@ const SearchResults = ({ results }) => {
             rowGetter={rowGetter}
             rowCount={results.length}
             rowHeight={60}
+            onRowClick={onRowClick}
           >
             <Column
               dataKey='mid'
