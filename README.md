@@ -2,6 +2,15 @@
 
 Lookup one or more media objects in POMS. Designed to be integrated in your CMS.
 
+## Development
+
+Assuming you have [NVM](https://github.com/creationix/nvm) and [Yarn](https://yarnpkg.com/lang/en/) installed:
+
+1. Clone the repository.
+2. Run `nvm use` to switch to the right Node version.
+3. Run `yarn install` to install the dependencies.
+4. Run `yarn start` to start the local development build.
+
 ## User Guide
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
