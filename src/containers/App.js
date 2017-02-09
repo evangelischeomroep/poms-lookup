@@ -55,7 +55,9 @@ class App extends Component {
           />}
         </div>
         <footer className='App-footer'>
-          <p>{selection.length} {selection.length === 1 ? 'item' : 'items'} geselecteerd <Button onClick={this.onChooseSelection}>Kies geselecteerde items</Button></p>
+          <p>
+            {selection.length ? <Button onClick={this.onChooseSelection}>Kies {selection.length} {selection.length === 1 ? 'geselecteerd item' : 'geselecteerde items'}</Button> : ''}
+          </p>
           <p>POMS Lookup</p>
         </footer>
       </div>

@@ -29,10 +29,10 @@ const SearchResults = ({
           <Table
             width={width}
             height={height}
-            headerHeight={60}
+            headerHeight={40}
             rowGetter={rowGetter}
             rowCount={results.length}
-            rowHeight={60}
+            rowHeight={40}
             rowClassName={rowClassName}
             onRowClick={onRowClick}
           >

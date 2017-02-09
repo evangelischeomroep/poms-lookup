@@ -1,9 +1,8 @@
 .Button {
 	appearance: none;
-	background-color: lightcoral;
-	border-radius: 4px;
-	border: 1px solid;
-	color: white;
+	background-color: lightblue;
+	border-radius: 5px;
+	border: 2px solid;
 	font-size: inherit;
 	padding: 0.5em 1em;
 }
