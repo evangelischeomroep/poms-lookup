@@ -1,10 +1,7 @@
-.App {
+.App,
+.App-content {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-}
-
-.App-content {
   flex-grow: 1;
 }
 
