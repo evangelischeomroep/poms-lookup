@@ -33,7 +33,9 @@ class App extends Component {
   }
 
   onChooseSelection = () => {
-    console.log('Selected: ', this.state.selection)
+    if (window.opener) {
+      window.opener.postMessage({ mids: this.state.selection }, '*')
+    }
   }
 
   render () {
