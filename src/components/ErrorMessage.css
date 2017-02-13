@@ -1,0 +1,8 @@
+.ErrorMessage {
+	text-align: center;
+}
+
+.ErrorMessage,
+.ErrorMessage-link {
+	color: red;
+}

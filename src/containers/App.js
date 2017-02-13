@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SearchForm from './SearchForm'
 import Button from '../components/Button'
 import SearchResults from '../components/SearchResults'
+import ErrorMessage from '../components/ErrorMessage'
 
 import './App.css'
 
@@ -15,7 +16,9 @@ const MOCK_RESULTS = [
 class App extends Component {
   state = {
     results: MOCK_RESULTS,
-    selection: []
+    selection: [],
+    isLoading: false,
+    error: true
   }
 
   onSearchResultClick = ({ mid }) => {
@@ -38,8 +41,35 @@ class App extends Component {
     }
   }
 
+  renderContent = () => {
+    const {
+      error,
+      isLoading,
+      results,
+      selection
+    } = this.state
+
+    if (error) {
+      return <ErrorMessage message='Oeps, er is iets fout gegaan!' />
+    }
+
+    if (isLoading) {
+      return (
+        <p>Laden...</p>
+      )
+    }
+
+    return results.length && (
+      <SearchResults
+        results={results}
+        selection={selection}
+        onSearchResultClick={this.onSearchResultClick}
+      />
+    )
+  }
+
   render () {
-    const { results, selection } = this.state
+    const { selection } = this.state
 
     return (
       <div className='App'>
@@ -48,11 +78,7 @@ class App extends Component {
           <SearchForm />
         </header>
         <div className='App-content'>
-          {results.length && <SearchResults
-            results={results}
-            selection={selection}
-            onSearchResultClick={this.onSearchResultClick}
-          />}
+          {this.renderContent()}
         </div>
         <footer className='App-footer'>
           <p>
