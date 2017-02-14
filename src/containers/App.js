@@ -16,10 +16,23 @@ const MOCK_RESULTS = [
 
 class App extends Component {
   state = {
-    results: MOCK_RESULTS,
+    results: [],
     selection: [],
     isLoading: false,
     error: undefined
+  }
+
+  onSearchFormSubmit = ({ text }) => {
+    this.setState({
+      isLoading: true
+    })
+
+    window.setTimeout(() => {
+      this.setState({
+        isLoading: false,
+        results: MOCK_RESULTS
+      })
+    }, 3000)
   }
 
   onSearchResultClick = ({ mid }) => {
@@ -64,7 +77,7 @@ class App extends Component {
         selection={selection}
         onSearchResultClick={this.onSearchResultClick}
       />
-    )
+    ) || null
   }
 
   render () {
@@ -74,7 +87,7 @@ class App extends Component {
       <div className='App'>
         <header className='App-header'>
           <h1>POMS Lookup</h1>
-          <SearchForm disabled={isLoading} />
+          <SearchForm disabled={isLoading} onSubmit={this.onSearchFormSubmit} />
         </header>
         <div className='App-content'>
           {this.renderContent()}
