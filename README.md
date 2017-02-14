@@ -9,7 +9,20 @@ Assuming you have [NVM](https://github.com/creationix/nvm) and [Yarn](https://ya
 1. Clone the repository.
 2. Run `nvm use` to switch to the right Node version.
 3. Run `yarn install` to install the dependencies.
+4. Set the right environment variables (see below).
 4. Run `yarn start` to start the local development build.
+
+In order to use the NPO API, you need to set a number of environment variables. The easiest way is to create a `.env` file in the project root, containing:
+
+```bash
+HOST=<your-hostname>
+REACT_APP_NPO_API_KEY=<your-key>
+REACT_APP_NPO_API_SECRET=<your-secret>
+```
+
+The `HOST` is used as the origin in NPO API requests, so be sure to set it to an allowed host. Don't forget to add this host to your `/etc/hosts` file.
+
+The `REACT_APP_NPO_API_KEY` and `REACT_APP_NPO_API_SECRET` should be set to the credentials to use to sign the NPO API request.
 
 ## User Guide
 
