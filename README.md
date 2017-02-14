@@ -2,6 +2,18 @@
 
 Lookup one or more media objects in POMS. Designed to be integrated in your CMS.
 
+## CMS Integration
+
+An example integration is available at: https://codepen.io/leonderijke/pen/pRxPGb
+
+It boils down to:
+
+1. Add an event listener for the `message` event (see [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage#The_dispatched_event)).
+2. After a user action (e.g. user clicks a button), open the POMS Lookup in a popup window.
+3. After the user selects one or more items and clicks the "Choose selection" button, a message will be posted to your window. The mids will be available as an array on the `data` property of the message event.
+
+In the `message` event handler you should check if the origin of the message is the POMS Lookup page, to prevent security issues. You can also close the popup window there, if desired.
+
 ## Development
 
 Assuming you have [NVM](https://github.com/creationix/nvm) and [Yarn](https://yarnpkg.com/lang/en/) installed:
