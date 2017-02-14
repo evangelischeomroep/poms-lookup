@@ -102,7 +102,7 @@ class App extends Component {
           <p>
             {selection.length ? <Button onClick={this.onChooseSelection}>Kies {selection.length} {selection.length === 1 ? 'geselecteerd item' : 'geselecteerde items'}</Button> : ''}
           </p>
-          <p>POMS Lookup</p>
+          <p>POMS Lookup | <a href='https://github.com/evangelischeomroep/poms-lookup' target='_blank'>GitHub</a></p>
         </footer>
       </div>
     )
