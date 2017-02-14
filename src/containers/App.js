@@ -68,13 +68,13 @@ class App extends Component {
   }
 
   render () {
-    const { selection } = this.state
+    const { selection, isLoading } = this.state
 
     return (
       <div className='App'>
         <header className='App-header'>
           <h1>POMS Lookup</h1>
-          <SearchForm />
+          <SearchForm disabled={isLoading} />
         </header>
         <div className='App-content'>
           {this.renderContent()}

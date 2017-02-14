@@ -6,3 +6,7 @@
 	font-size: inherit;
 	padding: 0.5em 1em;
 }
+
+.Button:disabled {
+	color: inherit;
+}

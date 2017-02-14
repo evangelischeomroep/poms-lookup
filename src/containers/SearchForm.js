@@ -19,9 +19,11 @@ class SearchForm extends Component {
   }
 
   render () {
+    const { disabled } = this.props
+
     return (
       <form onSubmit={this.onFormSubmit}>
-        <div className='SearchForm'>
+        <fieldset className='SearchForm' disabled={disabled}>
           <label className='SearchForm-label' htmlFor='text'>Zoekterm</label>
           <input
             id='text'
@@ -31,7 +33,7 @@ class SearchForm extends Component {
             placeholder='Vul een zoekterm in'
             onChange={this.onTextChange} />
           <Button type='submit'>Zoeken</Button>
-        </div>
+        </fieldset>
       </form>
     )
   }
