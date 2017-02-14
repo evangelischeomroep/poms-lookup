@@ -3,6 +3,7 @@ import SearchForm from './SearchForm'
 import Button from '../components/Button'
 import SearchResults from '../components/SearchResults'
 import ErrorMessage from '../components/ErrorMessage'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 import './App.css'
 
@@ -18,7 +19,7 @@ class App extends Component {
     results: MOCK_RESULTS,
     selection: [],
     isLoading: false,
-    error: true
+    error: undefined
   }
 
   onSearchResultClick = ({ mid }) => {
@@ -54,9 +55,7 @@ class App extends Component {
     }
 
     if (isLoading) {
-      return (
-        <p>Laden...</p>
-      )
+      return <LoadingIndicator />
     }
 
     return results.length && (
