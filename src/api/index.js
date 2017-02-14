@@ -18,7 +18,8 @@ const api = {
       baseURL: API_URL,
       method: 'post',
       params: {
-        properties: 'none'
+        properties: 'none',
+        max: 240
       },
       data: {
         searches: {
