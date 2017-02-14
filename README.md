@@ -14,6 +14,21 @@ It boils down to:
 
 In the `message` event handler you should check if the origin of the message is the POMS Lookup page, to prevent security issues. You can also close the popup window there, if desired.
 
+### Filtering
+
+It is possible to add some filters to the POMS Lookup URL, in order to set these as default filters in POMS Lookup. For example, in some situations you want to lookup seasons, in other situations you want to lookup broadcasts and clips.
+
+Currently supported filters:
+
+- `types`: Types to match
+- `broadcasters`: Broadcasters to match
+
+For example: `CLIP`s and `BROADCAST`s from the `EO`:
+
+```
+https://pomslookup.eo.nl/?types=CLIP&types=BROADCAST&broadcasters=EO
+```
+
 ## Development
 
 Assuming you have [NVM](https://github.com/creationix/nvm) and [Yarn](https://yarnpkg.com/lang/en/) installed:

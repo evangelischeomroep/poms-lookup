@@ -8,6 +8,18 @@ import api from '../api'
 
 import './App.css'
 
+const getFiltersFromUrl = () => {
+  const searchParams = new window.URLSearchParams(window.location.search)
+
+  return ['types', 'broadcasters'].reduce((filters, current) => {
+    if (searchParams.getAll(current)) {
+      filters[current] = searchParams.getAll(current)
+    }
+
+    return filters
+  }, {})
+}
+
 class App extends Component {
   state = {
     results: [],
@@ -25,7 +37,7 @@ class App extends Component {
       isLoading: true
     })
 
-    api.media({ text })
+    api.media({ text, ...getFiltersFromUrl() })
       .then((results) => {
         this.setState({
           isLoading: false,
