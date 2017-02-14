@@ -71,13 +71,13 @@ class App extends Component {
       return <LoadingIndicator />
     }
 
-    return results.length && (
+    return results.length ? (
       <SearchResults
         results={results}
         selection={selection}
         onSearchResultClick={this.onSearchResultClick}
       />
-    ) || null
+    ) : null
   }
 
   render () {
