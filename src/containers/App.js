@@ -4,15 +4,9 @@ import Button from '../components/Button'
 import SearchResults from '../components/SearchResults'
 import ErrorMessage from '../components/ErrorMessage'
 import LoadingIndicator from '../components/LoadingIndicator'
+import api from '../api'
 
 import './App.css'
-
-const MOCK_RESULTS = [
-  { mid: 'POMS_EO_7337515', title: 'Vlog: prinses Beatrix bezoekt Madurodam', date: 1486577234482, type: 'CLIP' },
-  { mid: 'POMS_EO_7167107', title: 'Vlog: Achter de schermen bij de opening van Thialf', date: 1485589331114, type: 'CLIP' },
-  { mid: 'POMS_EO_7001692', title: 'Vlog Joël Voordewind uit Israël', date: 1484749688641, type: 'CLIP' },
-  { mid: 'POMS_EO_5284895', title: 'Zapp Your Planet Vlog - Rondleiding kamp', date: 1475146440000, type: 'CLIP' }
-]
 
 class App extends Component {
   state = {
@@ -23,16 +17,28 @@ class App extends Component {
   }
 
   onSearchFormSubmit = ({ text }) => {
+    if (this.state.isLoading) {
+      return
+    }
+
     this.setState({
       isLoading: true
     })
 
-    window.setTimeout(() => {
-      this.setState({
-        isLoading: false,
-        results: MOCK_RESULTS
+    api.media({ text })
+      .then((results) => {
+        this.setState({
+          isLoading: false,
+          results: results
+        })
       })
-    }, 3000)
+      .catch((error) => {
+        console.error(error)
+        this.setState({
+          isLoading: false,
+          error: error
+        })
+      })
   }
 
   onSearchResultClick = ({ mid }) => {
