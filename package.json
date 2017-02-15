@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "classnames": "^2.2.5",
     "jssha": "^2.2.0",
     "react": "^15.4.2",
     "react-addons-shallow-compare": "^15.4.2",
