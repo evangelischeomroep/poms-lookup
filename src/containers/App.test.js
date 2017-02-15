@@ -61,6 +61,8 @@ describe('onSearchFormSubmit', () => {
   })
 
   it('unsets the isLoading state when the API call succeeds', () => {
+    expect.assertions(2)
+
     return wrapper.instance().onSearchFormSubmit({ text: 'succeed' }).then(() => {
       expect(wrapper.state('results')).toHaveLength(4)
       expect(wrapper.state('isLoading')).toEqual(false)
@@ -68,6 +70,8 @@ describe('onSearchFormSubmit', () => {
   })
 
   it('sets the error state if the API call fails', () => {
+    expect.assertions(2)
+
     return wrapper.instance().onSearchFormSubmit({ text: 'fail' }).catch((error) => {
       expect(error.message).toEqual('Something went wrong')
       expect(wrapper.state('error')).toEqual(error)
@@ -75,6 +79,8 @@ describe('onSearchFormSubmit', () => {
   })
 
   it('unsets the isLoading state if the API call fails', () => {
+    expect.assertions(2)
+
     return wrapper.instance().onSearchFormSubmit({ text: 'fail' }).catch((error) => {
       expect(error.message).toEqual('Something went wrong')
       expect(wrapper.state('isLoading')).toEqual(false)
