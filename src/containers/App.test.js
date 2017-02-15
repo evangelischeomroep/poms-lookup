@@ -56,7 +56,7 @@ describe('onSearchFormSubmit', () => {
   })
 
   it('sets the isLoading state', () => {
-    wrapper.instance().onSearchFormSubmit({ text: 'test' })
+    wrapper.instance().onSearchFormSubmit({ text: 'succeed' })
     expect(wrapper.state('isLoading')).toEqual(true)
   })
 
