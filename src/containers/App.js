@@ -26,7 +26,7 @@ class App extends Component {
       isLoading: true
     })
 
-    api.media({ text, ...getFiltersFromUrl() })
+    return api.media({ text, ...getFiltersFromUrl() })
       .then((results) => {
         this.setState({
           isLoading: false,
@@ -34,11 +34,12 @@ class App extends Component {
         })
       })
       .catch((error) => {
-        console.error(error)
         this.setState({
           isLoading: false,
           error: error
         })
+
+        throw error
       })
   }
 
