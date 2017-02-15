@@ -5,20 +5,9 @@ import SearchResults from '../components/SearchResults'
 import ErrorMessage from '../components/ErrorMessage'
 import LoadingIndicator from '../components/LoadingIndicator'
 import api from '../api'
+import getFiltersFromUrl from '../utils/getFiltersFromUrl'
 
 import './App.css'
-
-const getFiltersFromUrl = () => {
-  const searchParams = new window.URLSearchParams(window.location.search)
-
-  return ['types', 'broadcasters'].reduce((filters, current) => {
-    if (searchParams.getAll(current)) {
-      filters[current] = searchParams.getAll(current)
-    }
-
-    return filters
-  }, {})
-}
 
 class App extends Component {
   state = {
@@ -37,7 +26,7 @@ class App extends Component {
       isLoading: true
     })
 
-    api.media({ text, ...getFiltersFromUrl() })
+    return api.media({ text, ...getFiltersFromUrl() })
       .then((results) => {
         this.setState({
           isLoading: false,
@@ -45,11 +34,12 @@ class App extends Component {
         })
       })
       .catch((error) => {
-        console.error(error)
         this.setState({
           isLoading: false,
           error: error
         })
+
+        throw error
       })
   }
 

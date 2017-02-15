@@ -5,6 +5,10 @@ import 'react-virtualized/styles.css'
 
 const root = document.getElementById('root')
 
+window.addEventListener('error', (error) => {
+  console.error(error)
+})
+
 let render = () => {
   const App = require('./containers/App').default
 
