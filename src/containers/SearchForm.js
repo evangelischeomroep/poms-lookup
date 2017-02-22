@@ -31,6 +31,7 @@ class SearchForm extends Component {
               type='text'
               value={this.state.text}
               placeholder='Vul een zoekterm in'
+              autoFocus
               onChange={this.onTextChange} />
             <Button type='submit'>Zoeken</Button>
           </div>

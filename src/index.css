@@ -4,6 +4,10 @@
   box-sizing: inherit;
 }
 
+::selection {
+  background-color: lightpink;
+}
+
 html {
   box-sizing: border-box;
 }

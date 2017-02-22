@@ -14,6 +14,7 @@ class App extends Component {
     results: [],
     selection: [],
     isLoading: false,
+    hasLoaded: false,
     error: undefined
   }
 
@@ -30,12 +31,14 @@ class App extends Component {
       .then((results) => {
         this.setState({
           isLoading: false,
+          hasLoaded: true,
           results: results
         })
       })
       .catch((error) => {
         this.setState({
           isLoading: false,
+          hasLoaded: true,
           error: error
         })
 
@@ -79,6 +82,7 @@ class App extends Component {
     const {
       error,
       isLoading,
+      hasLoaded,
       results,
       selection
     } = this.state
@@ -89,6 +93,10 @@ class App extends Component {
 
     if (isLoading) {
       return <LoadingIndicator />
+    }
+
+    if (hasLoaded && !results.length) {
+      return <p>Geen resultaten gevonden. Probeer een andere zoekterm.</p>
     }
 
     return results.length ? (
