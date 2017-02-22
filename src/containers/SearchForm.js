@@ -24,14 +24,16 @@ class SearchForm extends Component {
       <form onSubmit={this.onFormSubmit}>
         <fieldset className='SearchForm' disabled={disabled}>
           <label className='SearchForm-label' htmlFor='text'>Zoekterm</label>
-          <input
-            id='text'
-            className='SearchForm-input'
-            type='text'
-            value={this.state.text}
-            placeholder='Vul een zoekterm in'
-            onChange={this.onTextChange} />
-          <Button type='submit'>Zoeken</Button>
+          <div className='SearchForm-inputGroup'>
+            <input
+              id='text'
+              className='SearchForm-input'
+              type='text'
+              value={this.state.text}
+              placeholder='Vul een zoekterm in'
+              onChange={this.onTextChange} />
+            <Button type='submit'>Zoeken</Button>
+          </div>
         </fieldset>
       </form>
     )

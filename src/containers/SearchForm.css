@@ -1,9 +1,6 @@
 .SearchForm {
-	align-items: center;
 	border: none;
-	display: flex;
-	flex-wrap: wrap;
-	width: 100%;
+	padding: 0;
 }
 
 .SearchForm:disabled {
@@ -11,11 +8,16 @@
 }
 
 .SearchForm-label {
+	display: block;
 	font-weight: bold;
 	margin-bottom: 0.25em;
 	margin-left: 0.5em;
+	margin-right: 0.5em;
 	text-align: left;
-	width: 100%;
+}
+
+.SearchForm-inputGroup {
+	display: flex;
 }
 
 .SearchForm-input {
