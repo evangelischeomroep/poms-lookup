@@ -5,7 +5,7 @@ import SearchResults from '../components/SearchResults'
 import ErrorMessage from '../components/ErrorMessage'
 import LoadingIndicator from '../components/LoadingIndicator'
 import api from '../api'
-import getFiltersFromUrl from '../utils/getFiltersFromUrl'
+import { getFiltersFromUrl } from '../utils/urlHelpers'
 
 import './App.css'
 
