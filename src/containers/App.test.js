@@ -12,6 +12,32 @@ it('renders without crashing', () => {
   mount(<App />)
 })
 
+describe('Limit selection', () => {
+  it('renders a limit message', () => {
+    let wrapper = shallow(<App selectionLimit={1} />)
+
+    expect.assertions(1)
+    return wrapper.instance().onSearchFormSubmit({ text: 'succeed' }).then(() => {
+      expect(wrapper.find('header > p')).toHaveLength(1)
+    })
+  })
+
+  it('limits the selection', () => {
+    let wrapper = shallow(<App selectionLimit={2} />)
+    const mids = ['POMS_EO_7337515', 'POMS_EO_7167107', 'POMS_EO_7001692', 'POMS_EO_5284895']
+
+    expect.assertions(2)
+    return wrapper.instance().onSearchFormSubmit({ text: 'succeed' }).then(() => {
+      wrapper.instance().onSearchResultClick({ mid: mids[0] })
+      wrapper.instance().onSearchResultClick({ mid: mids[1] })
+      expect(wrapper.state('selection')).toHaveLength(2)
+
+      wrapper.instance().onSearchResultClick({ mid: mids[2] })
+      expect(wrapper.state('selection')).toHaveLength(2)
+    })
+  })
+})
+
 describe('Error state', () => {
   let wrapper
 
