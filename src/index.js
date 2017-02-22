@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import 'react-virtualized/styles.css'
+import { getLimitFromUrl } from './utils/urlHelpers'
 
 const root = document.getElementById('root')
 
@@ -13,7 +14,7 @@ let render = () => {
   const App = require('./containers/App').default
 
   ReactDOM.render(
-    <App />,
+    <App selectionLimit={getLimitFromUrl()} />,
     root,
   )
 }

@@ -44,13 +44,15 @@ class App extends Component {
   }
 
   onSearchResultClick = ({ mid }) => {
+    const limit = this.props.selectionLimit
+
     // Remove from selection if it is already selected
     if (this.state.selection.indexOf(mid) > -1) {
       this.setState({
         selection: this.state.selection.filter(item => item !== mid)
       })
-    // Add to selection if not already selected
-    } else {
+    // Add to selection if not already selected and selection limit is not reached yet
+    } else if (!limit || (this.state.selection.length < limit)) {
       this.setState({
         selection: [...this.state.selection, mid]
       })
@@ -61,6 +63,16 @@ class App extends Component {
     if (window.opener) {
       window.opener.postMessage({ mids: this.state.selection }, '*')
     }
+  }
+
+  renderLimitMessage = () => {
+    const limit = this.props.selectionLimit
+
+    if (limit && this.state.results.length) {
+      return <p>Je kunt maximaal {limit} {limit === 1 ? 'item' : 'items'} selecteren</p>
+    }
+
+    return null
   }
 
   renderContent = () => {
@@ -96,6 +108,7 @@ class App extends Component {
         <header className='App-header'>
           <h1>POMS Lookup</h1>
           <SearchForm disabled={isLoading} onSubmit={this.onSearchFormSubmit} />
+          {this.renderLimitMessage()}
         </header>
         <div className='App-content'>
           {this.renderContent()}

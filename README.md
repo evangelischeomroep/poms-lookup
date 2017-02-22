@@ -39,6 +39,14 @@ https://pomslookup.eo.nl/?profile=eo
 
 You can use both a profile and filtering, if desired.
 
+### Limit
+
+It is possible to limit the number of items that can be selected. For example, if you only expect one item from the POMS Lookup or if you expect a maximum of five items from the POMS Lookup. You can specify the limit by adding the `limit` parameter to the POMS Lookup URL:
+
+```
+https://pomslookup.eo.nl/?limit=1
+```
+
 ## Development
 
 Assuming you have [NVM](https://github.com/creationix/nvm) and [Yarn](https://yarnpkg.com/lang/en/) installed:
