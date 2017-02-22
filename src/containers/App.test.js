@@ -28,11 +28,11 @@ describe('Limit selection', () => {
 
     expect.assertions(2)
     return wrapper.instance().onSearchFormSubmit({ text: 'succeed' }).then(() => {
-      wrapper.instance().onSearchResultClick({ mid: items[0].mid })
-      wrapper.instance().onSearchResultClick({ mid: items[1].mid })
+      wrapper.instance().onSearchResultClick(items[0])
+      wrapper.instance().onSearchResultClick(items[1])
       expect(wrapper.state('selection')).toHaveLength(2)
 
-      wrapper.instance().onSearchResultClick({ mid: items[2].mid })
+      wrapper.instance().onSearchResultClick(items[2])
       expect(wrapper.state('selection')).toHaveLength(2)
     })
   })
@@ -126,11 +126,11 @@ describe('onSearchFormSubmit', () => {
 describe('onChooseSelection', () => {
   it('posts a message to the opener', () => {
     const wrapper = shallow(<App />)
-    const mids = MOCK_RESULTS.map(i => i.mid)
+    const selection = MOCK_RESULTS.slice(0, 2)
 
-    wrapper.setState({ selection: mids })
+    wrapper.setState({ selection: selection })
     wrapper.instance().onChooseSelection()
 
-    expect(window.opener.postMessage).toHaveBeenCalledWith({ mids: mids }, '*')
+    expect(window.opener.postMessage).toHaveBeenCalledWith({ items: selection }, '*')
   })
 })
