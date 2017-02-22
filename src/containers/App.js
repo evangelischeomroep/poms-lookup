@@ -18,6 +18,10 @@ class App extends Component {
     error: undefined
   }
 
+  componentDidMount = () => {
+    this.onSearchFormSubmit({ text: '' })
+  }
+
   onSearchFormSubmit = ({ text }) => {
     if (this.state.isLoading) {
       return
