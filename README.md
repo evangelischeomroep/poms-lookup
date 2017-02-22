@@ -29,6 +29,16 @@ For example: `CLIP`s and `BROADCAST`s from the `EO`:
 https://pomslookup.eo.nl/?types=CLIP&types=BROADCAST&broadcasters=EO
 ```
 
+### Profile
+
+It is possible to use a profile by adding the `profile` parameter to the POMS Lookup URL. Please note that the existence of the profile is not validated. For example, to specify the `eo` profile, use this URL to POMS Lookup:
+
+```
+https://pomslookup.eo.nl/?profile=eo
+```
+
+You can use both a profile and filtering, if desired.
+
 ## Development
 
 Assuming you have [NVM](https://github.com/creationix/nvm) and [Yarn](https://yarnpkg.com/lang/en/) installed:

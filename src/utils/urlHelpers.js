@@ -2,7 +2,7 @@ import URLSearchParamsPolyfill from 'url-search-params'
 
 const URLSearchParams = window.URLSearchParams || URLSearchParamsPolyfill
 
-const getFiltersFromUrl = () => {
+export const getFiltersFromUrl = () => {
   const searchParams = new URLSearchParams(window.location.search)
 
   return ['types', 'broadcasters'].reduce((filters, current) => {
@@ -14,4 +14,8 @@ const getFiltersFromUrl = () => {
   }, {})
 }
 
-export default getFiltersFromUrl
+export const getProfileFromUrl = () => {
+  const searchParams = new URLSearchParams(window.location.search)
+
+  return searchParams.get('profile')
+}
