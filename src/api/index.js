@@ -2,6 +2,7 @@ import axios from 'axios'
 
 import npoApiInterceptor from './npoApiInterceptor'
 import transformItem from './transformItem'
+import { getProfileFromUrl } from '../utils/urlHelpers'
 
 // Configure Axios to use the NPO API Request Interceptor
 axios.interceptors.request.use(npoApiInterceptor({
@@ -48,15 +49,23 @@ const formatSearchQuery = ({ text, types = [], broadcasters = [] }) => {
 }
 
 const api = {
-  media: ({ text, types = [], broadcasters = [] }) =>
-    axios({
+  media: ({ text, types = [], broadcasters = [] }) => {
+    const profile = getProfileFromUrl()
+
+    const params = {
+      properties: 'none',
+      max: 240
+    }
+
+    if (profile) {
+      params.profile = profile
+    }
+
+    return axios({
       url: '/media',
       baseURL: API_URL,
       method: 'post',
-      params: {
-        properties: 'none',
-        max: 240
-      },
+      params: params,
       data: {
         searches: formatSearchQuery({ text, types, broadcasters }),
         sort: {
@@ -71,6 +80,7 @@ const api = {
 
       return res.data.items.map((item) => transformItem(item.result))
     })
+  }
 }
 
 export default api

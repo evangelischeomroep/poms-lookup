@@ -13,3 +13,9 @@ export const getFiltersFromUrl = () => {
     return filters
   }, {})
 }
+
+export const getProfileFromUrl = () => {
+  const searchParams = new URLSearchParams(window.location.search)
+
+  return searchParams.get('profile')
+}
