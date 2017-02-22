@@ -5,7 +5,7 @@ import { mount, shallow } from 'enzyme'
 import App from './App'
 import api from '../api'
 
-jest.mock('../utils/getFiltersFromUrl')
+jest.mock('../utils/urlHelpers')
 jest.mock('../api')
 
 it('renders without crashing', () => {
