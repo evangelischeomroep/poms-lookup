@@ -57,6 +57,11 @@ const SearchResults = ({
               label='Type'
               width={110}
             />
+            <Column
+              dataKey='avType'
+              label='AV Type'
+              width={110}
+            />
           </Table>
         )}
       </AutoSizer>
