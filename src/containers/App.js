@@ -46,25 +46,26 @@ class App extends Component {
       })
   }
 
-  onSearchResultClick = ({ mid }) => {
+  onSearchResultClick = (item) => {
+    const mid = item.mid
     const limit = this.props.selectionLimit
 
     // Remove from selection if it is already selected
-    if (this.state.selection.indexOf(mid) > -1) {
+    if (this.state.selection.find(s => s.mid === mid)) {
       this.setState({
-        selection: this.state.selection.filter(item => item !== mid)
+        selection: this.state.selection.filter(s => s.mid !== mid)
       })
     // Add to selection if not already selected and selection limit is not reached yet
     } else if (!limit || (this.state.selection.length < limit)) {
       this.setState({
-        selection: [...this.state.selection, mid]
+        selection: [...this.state.selection, item]
       })
     }
   }
 
   onChooseSelection = () => {
     if (window.opener) {
-      window.opener.postMessage({ mids: this.state.selection }, '*')
+      window.opener.postMessage({ items: this.state.selection }, '*')
     }
   }
 

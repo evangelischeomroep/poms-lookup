@@ -3,7 +3,7 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
 import App from './App'
-import api from '../api'
+import api, { MOCK_RESULTS } from '../api'
 
 jest.mock('../utils/urlHelpers')
 jest.mock('../api')
@@ -24,15 +24,15 @@ describe('Limit selection', () => {
 
   it('limits the selection', () => {
     let wrapper = shallow(<App selectionLimit={2} />)
-    const mids = ['POMS_EO_7337515', 'POMS_EO_7167107', 'POMS_EO_7001692', 'POMS_EO_5284895']
+    const items = MOCK_RESULTS
 
     expect.assertions(2)
     return wrapper.instance().onSearchFormSubmit({ text: 'succeed' }).then(() => {
-      wrapper.instance().onSearchResultClick({ mid: mids[0] })
-      wrapper.instance().onSearchResultClick({ mid: mids[1] })
+      wrapper.instance().onSearchResultClick(items[0])
+      wrapper.instance().onSearchResultClick(items[1])
       expect(wrapper.state('selection')).toHaveLength(2)
 
-      wrapper.instance().onSearchResultClick({ mid: mids[2] })
+      wrapper.instance().onSearchResultClick(items[2])
       expect(wrapper.state('selection')).toHaveLength(2)
     })
   })
@@ -126,11 +126,11 @@ describe('onSearchFormSubmit', () => {
 describe('onChooseSelection', () => {
   it('posts a message to the opener', () => {
     const wrapper = shallow(<App />)
-    const mids = ['POMS_EO_7337515', 'POMS_EO_7167107', 'POMS_EO_7001692', 'POMS_EO_5284895']
+    const selection = MOCK_RESULTS.slice(0, 2)
 
-    wrapper.setState({ selection: mids })
+    wrapper.setState({ selection: selection })
     wrapper.instance().onChooseSelection()
 
-    expect(window.opener.postMessage).toHaveBeenCalledWith({ mids: mids }, '*')
+    expect(window.opener.postMessage).toHaveBeenCalledWith({ items: selection }, '*')
   })
 })

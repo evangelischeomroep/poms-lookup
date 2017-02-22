@@ -13,12 +13,12 @@ const SearchResults = ({
   const rowClassName = ({ index }) => {
     const mid = results[index] && results[index].mid
 
-    return selection.indexOf(mid) > -1 ? 'SearchResults-row is-selected' : 'SearchResults-row'
+    return selection.find(s => s.mid === mid) ? 'SearchResults-row is-selected' : 'SearchResults-row'
   }
 
   const onRowClick = ({ rowData }) => {
-    if (rowData && rowData.mid) {
-      onSearchResultClick({ mid: rowData.mid })
+    if (rowData) {
+      onSearchResultClick(rowData)
     }
   }
 
