@@ -14,8 +14,18 @@ export const getFiltersFromUrl = () => {
   }, {})
 }
 
-export const getProfileFromUrl = () => {
+const getPropertyFromUrl = (property) => () => {
   const searchParams = new URLSearchParams(window.location.search)
 
-  return searchParams.get('profile')
+  return searchParams.get(property)
+}
+
+export const getProfileFromUrl = getPropertyFromUrl('profile')
+
+export const getLimitFromUrl = () => {
+  const limit = getPropertyFromUrl('limit')()
+
+  if (limit) {
+    return parseInt(limit, 10)
+  }
 }
