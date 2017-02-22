@@ -11,10 +11,10 @@ const apiMock = {
   media: ({ text, types = [], broadcasters = [] }) => {
     return new Promise((resolve, reject) => {
       process.nextTick(() => {
-        if (text === 'succeed') {
-          resolve(MOCK_RESULTS)
-        } else {
+        if (text === 'fail') {
           reject(new Error('Something went wrong'))
+        } else {
+          resolve(MOCK_RESULTS)
         }
       })
     })
