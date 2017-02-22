@@ -1,5 +1,9 @@
+import URLSearchParamsPolyfill from 'url-search-params'
+
+const URLSearchParams = window.URLSearchParams || URLSearchParamsPolyfill
+
 const getFiltersFromUrl = () => {
-  const searchParams = new window.URLSearchParams(window.location.search)
+  const searchParams = new URLSearchParams(window.location.search)
 
   return ['types', 'broadcasters'].reduce((filters, current) => {
     if (searchParams.getAll(current)) {
