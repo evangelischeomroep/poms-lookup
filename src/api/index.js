@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import npoApiInterceptor from './npoApiInterceptor'
+import npoApiInterceptor from 'npo-api-interceptor'
 import transformItem from './transformItem'
 import { getProfileFromUrl } from '../utils/urlHelpers'
 
