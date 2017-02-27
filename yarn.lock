@@ -3788,9 +3788,9 @@ npmlog@^4.0.1:
     gauge "~2.7.1"
     set-blocking "~2.0.0"
 
-npo-api-interceptor@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/npo-api-interceptor/-/npo-api-interceptor-0.1.3.tgz#aa542ad95c53d08d44f8e10d6b9248b049bde508"
+npo-api-interceptor@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/npo-api-interceptor/-/npo-api-interceptor-1.1.0.tgz#5f5a1543405ed8d0ac8feaab28ded66b1513dae7"
   dependencies:
     jssha "^2.2.0"
 
