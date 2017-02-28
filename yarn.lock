@@ -3788,6 +3788,12 @@ npmlog@^4.0.1:
     gauge "~2.7.1"
     set-blocking "~2.0.0"
 
+npo-api-interceptor@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/npo-api-interceptor/-/npo-api-interceptor-1.1.0.tgz#5f5a1543405ed8d0ac8feaab28ded66b1513dae7"
+  dependencies:
+    jssha "^2.2.0"
+
 nth-check@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-1.0.1.tgz#9929acdf628fc2c41098deab82ac580cf149aae4"
