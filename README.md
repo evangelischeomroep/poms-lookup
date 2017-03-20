@@ -4,7 +4,7 @@ Lookup one or more media objects in POMS. Designed to be integrated in your CMS.
 
 ## CMS Integration
 
-An example integration is available at: https://codepen.io/leonderijke/pen/pRxPGb
+An example integration is available at: https://pomslookup.eo.nl/demo/
 
 It boils down to:
 
