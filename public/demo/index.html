@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>POMS Lookup Demo</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 1.25;
+    }
+
+    div {
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      width: 100%;
+    }
+
+    input {
+      border: 3px solid darkslateblue;
+      border-radius: 5px;
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      font-size: inherit;
+      margin-left: 1em;
+      margin-right: 1em;
+      padding: 0.5em 1em;
+    }
+
+    button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: darkslateblue;
+      border: 3px solid darkslateblue;
+      border-radius: 5px;
+      color: white;
+      font-size: inherit;
+      padding: 0.5em 1em;
+    }
+  </style>
+</head>
+
+<body translate="no">
+
+  <h1>POMS Lookup Demo</h1>
+  <div>
+    <label for="mids">Mids</label>
+    <input id="mids" type="text" placeholder="Vul hier kommagescheiden MIDs in" />
+    <button>Selecteer in POMS</button>
+  </div>
+  <p>Titels:</p>
+  <ul class="results"></ul>
+
+  <script>
+    'use strict';
+
+    var POMS_LOOKUP_URL = 'https://pomslookup.eo.nl';
+
+    var button = document.querySelector('button');
+    var input = document.querySelector('input');
+    var results = document.querySelector('.results');
+
+    var popup;
+
+    function onButtonClick() {
+      popup = window.open(POMS_LOOKUP_URL + '/?types=CLIP&types=BROADCAST&broadcasters=EO', 'POMS_Lookup');
+    }
+
+    /**
+     * Message event handler
+     *
+     * @param {MessageEvent} event
+     */
+    function onMessage(event) {
+      var origin = event.origin || event.originalEvent.origin;
+
+      // Check if the message is coming from POMS Lookup and if the message data contains an `items` property
+      if (origin === POMS_LOOKUP_URL && event.data && event.data.items) {
+        // Store the mids in the input
+        input.value = event.data.items.map(function (item) {
+          return item.mid;
+        }).join(',');
+
+        // Add the titles to the demo results list
+        results.innerHTML = event.data.items.map(function (i) {
+          return '<li>' + i.title + '</li>';
+        }).join('');
+
+        // Close the popup
+        popup.close();
+      }
+    }
+
+    button.addEventListener('click', onButtonClick);
+
+    window.addEventListener('message', onMessage);
+  </script>
+</body>
+</html>
