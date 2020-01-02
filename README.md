@@ -53,9 +53,9 @@ Assuming you have [NVM](https://github.com/creationix/nvm) and [Yarn](https://ya
 
 1. Clone the repository.
 2. Run `nvm use` to switch to the right Node version.
-3. Run `yarn install` to install the dependencies.
+3. Run `npm install` to install the dependencies.
 4. Set the right environment variables (see below).
-4. Run `yarn start` to start the local development build.
+5. Run `npm start` to start the local development build.
 
 In order to use the NPO API, you need to set a number of environment variables. The easiest way is to create a `.env` file in the project root, containing:
 
