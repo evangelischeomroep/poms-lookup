@@ -1,6 +1,14 @@
-# POMS Lookup
+<img src="./.github/banner.svg" alt="poms-lookup" width="100%">
+
+<p align="center">Pick media from POMS in a popup and hand them to your CMS.</p>
 
 Lookup one or more media objects in POMS. Designed to be integrated in your CMS.
+
+## What it does
+
+- **Searches POMS.** Editors search media by text, newest first, optionally within a POMS profile.
+- **Takes its settings from the URL.** Your CMS can preset the media types, broadcasters, profile and the maximum number of items to select.
+- **Hands the selection to your CMS.** The chosen items, each with its MID, title, date, type and AV type, are posted as a message to the window that opened the lookup.
 
 ## CMS Integration
 
@@ -47,28 +55,6 @@ It is possible to limit the number of items that can be selected. For example, i
 https://pomslookup.eo.nl/?limit=1
 ```
 
-## Development
+## Contributing
 
-Assuming you have [NVM](https://github.com/creationix/nvm) and [Yarn](https://yarnpkg.com/lang/en/) installed:
-
-1. Clone the repository.
-2. Run `nvm use` to switch to the right Node version.
-3. Run `npm install` to install the dependencies.
-4. Set the right environment variables (see below).
-5. Run `npm start` to start the local development build.
-
-In order to use the NPO API, you need to set a number of environment variables. The easiest way is to create a `.env` file in the project root, containing:
-
-```bash
-HOST=<your-hostname>
-REACT_APP_NPO_API_KEY=<your-key>
-REACT_APP_NPO_API_SECRET=<your-secret>
-```
-
-The `HOST` is used as the origin in NPO API requests, so be sure to set it to an allowed host. Don't forget to add this host to your `/etc/hosts` file.
-
-The `REACT_APP_NPO_API_KEY` and `REACT_APP_NPO_API_SECRET` should be set to the credentials to use to sign the NPO API request.
-
-## User Guide
-
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). Information on how to perform common tasks can be found in the most recent version of the User Guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+Working on this repo? [AGENTS.md](./AGENTS.md) has the setup, conventions and checks.
